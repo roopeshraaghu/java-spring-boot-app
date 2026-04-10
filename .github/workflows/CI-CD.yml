@@ -51,15 +51,14 @@ jobs:
         env:
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-          RELEASE_URL: ${{ secrets.NEXUS_RELEASE_URL }}
-          SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
-
+          NEXUS_RELEASE_URL: ${{ secrets.NEXUS_RELEASE_URL }}
+          NEXUS_SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
         run: |
           mvn -s .m2/settings.xml deploy -DskipTests \
-            -Dnexus.username=$USERNAME \
-            -Dnexus.password=$PASSWORD \
-            -Dnexus.url.releases=$RELEASEURL \
-            -Dnexus.url.snapshots=$SNAPSHOTURL
+            -Dnexus.username=${NEXUS_USERNAME} \
+            -Dnexus.password='${NEXUS_PASSWORD}' \
+            -Dnexus.url.releases=${NEXUS_RELEASE_URL} \
+            -Dnexus.url.snapshots=${NEXUS_SNAPSHOT_URL}
 
       - name: Upload JAR to GitHub Artifacts
         uses: actions/upload-artifact@v4
