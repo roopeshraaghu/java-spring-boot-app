@@ -56,10 +56,10 @@ jobs:
 
         run: |
           mvn -s .m2/settings.xml deploy -DskipTests \
-            -D nexus.username=$USERNAME \
-            -D nexus.password=$PASSWORD \
-            -D nexus.url.releases=$RELEASEURL \
-            -D nexus.url.snapshots=$SNAPSHOTURL
+            -Dnexus.username=$USERNAME \
+            -Dnexus.password=$PASSWORD \
+            -Dnexus.url.releases=$RELEASEURL \
+            -Dnexus.url.snapshots=$SNAPSHOTURL
 
       - name: Upload JAR to GitHub Artifacts
         uses: actions/upload-artifact@v4

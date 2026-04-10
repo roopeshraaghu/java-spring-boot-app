@@ -9,7 +9,6 @@
     <version>1.0</version>
 
     <name>spring-boot-demo</name>
-    <url></url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -82,6 +81,4 @@
             <url>${nexus.url.releases}</url>
         </repository>
     </distributionManagement>
-
-
 </project>
