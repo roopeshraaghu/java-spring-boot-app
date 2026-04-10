@@ -9,8 +9,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: { { .Values.rollingUpdate.maxSurge | default 1 } }
-      maxUnavailable: { { .Values.rollingUpdate.maxUnavailable | default 0 } }
+      maxSurge: {{ .Values.rollingUpdate.maxSurge | default 1 }}
+      maxUnavailable: {{ .Values.rollingUpdate.maxUnavailable | default 0 }}
   selector:
     matchLabels:
       app: simple-java-app
