@@ -70,6 +70,18 @@
 
         </plugins>
     </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>nexus</name>
+            <url>${nexus.url.snapshots}</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>nexus</name>
+            <url>${nexus.url.releases}</url>
+        </repository>
+    </distributionManagement>
 
 
 </project>

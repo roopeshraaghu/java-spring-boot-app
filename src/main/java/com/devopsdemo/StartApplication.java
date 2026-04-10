@@ -1,4 +1,4 @@
-package com.mohan;
+package com.devopsdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +13,8 @@ public class StartApplication {
     @GetMapping("/")
     public String index(final Model model) {
         model.addAttribute("title", "I have successfuly built a sprint boot application using Maven");
-        model.addAttribute("msg", "This application is deployed on to Kubernetes using Argo CD");
-        model.addAttribute("msg", "Github webhook is enabled for source repo to trigger Jenkins Pipeline automatically!!!! - Modified_Text");
+        model.addAttribute("msg", "This application is deployed on to Kubernetes using GitHub Actions");
+        model.addAttribute("msg", "Git hub actions Deployed!!!! - Modified_Text");
         
         return "index";
     }

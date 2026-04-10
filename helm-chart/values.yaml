@@ -1,4 +1,7 @@
 replicaCount: 2
+rollingUpdate:
+  maxSurge: 1        # Can create 1 extra pod during update
+  maxUnavailable: 0
 
 image:
   repository: 951013217897.dkr.ecr.us-east-1.amazonaws.com/simple-java-app
