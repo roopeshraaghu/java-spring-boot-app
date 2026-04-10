@@ -72,6 +72,16 @@ jobs:
         run: |
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.event.inputs.image_tag }}
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+      - name: Copy Helm charts to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "helm-chart/"
+          target: "/home/ubuntu/"
+          strip_components: 0     
       
       - name: Deploy to KIND
         uses: appleboy/ssh-action@v1.0.3
@@ -91,7 +101,7 @@ jobs:
             kind load docker-image ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }} --name devops-kind-cluster
             
             # Deploy with Helm using the image tag
-            helm upgrade --install ${{ env.RELEASE_NAME }} ./helm/simple-java-app \
+            helm upgrade --install ${{ env.RELEASE_NAME }} /home/ubuntu/helm-chart \
               --namespace ${{ env.NAMESPACE }} \
               --create-namespace \
               --set image.repository=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }} \
