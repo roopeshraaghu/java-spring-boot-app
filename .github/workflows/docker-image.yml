@@ -113,3 +113,5 @@ jobs:
             # Verify deployment
             kubectl get pods -n ${{ env.NAMESPACE }}
             kubectl get svc -n ${{ env.NAMESPACE }}
+            # Delete helm folder
+            rm -rf /home/ubuntu/helm-chart
