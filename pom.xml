@@ -7,7 +7,6 @@
     <groupId>com.abhishek</groupId>
     <artifactId>spring-boot-demo</artifactId>
     <version>1.0</version>
-
     <name>spring-boot-demo</name>
 
     <parent>
@@ -24,7 +23,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -38,20 +36,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- debugging -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
     <build>
-
         <finalName>spring-boot-web</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -66,19 +60,20 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
+
+    <!-- Add distribution management for Nexus -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>nexus</name>
-            <url>${nexus.url.snapshots}</url>
-        </snapshotRepository>
         <repository>
             <id>nexus-releases</id>
-            <name>nexus</name>
+            <name>Nexus Release Repository</name>
             <url>${nexus.url.releases}</url>
         </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>${nexus.url.snapshots}</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
